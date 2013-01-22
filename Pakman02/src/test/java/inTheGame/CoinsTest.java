@@ -16,8 +16,10 @@ import static org.junit.Assert.*;
  * @author simone
  */
 public class CoinsTest {
+    Wall wall;
     
     public CoinsTest() {
+        this.wall=createWall();
     }
     
     @BeforeClass
@@ -40,4 +42,8 @@ public class CoinsTest {
     //
     // @Test
     // public void hello() {}
+
+    private Wall createWall() {
+        return null;
+    }
 }
