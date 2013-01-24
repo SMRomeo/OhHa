@@ -2,11 +2,9 @@
 package Pakman.domain;
 
 import Pakman.Direction;
-import inTheGame.Wall;
 
 public abstract class Individual  extends Point implements Moving, Bidimensional {
     private Direction direction; 
-    private boolean canMove;
     private Wall wall;
     private int x1;
     private int y1;
@@ -15,7 +13,6 @@ public abstract class Individual  extends Point implements Moving, Bidimensional
         super(x,y);
         this.x1=x+1;
         this.y1=y+1;
-        this.canMove=true;
         // The wall is set later on by public void set(Wall wall);
     }
     @Override

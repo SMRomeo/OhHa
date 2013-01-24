@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
  * @author simone
  */
 public class CoinsTest {
-    Wall wall;
+    Wall1 wall;
     
     public CoinsTest() {
         this.wall=createWall();
@@ -43,7 +43,7 @@ public class CoinsTest {
     // @Test
     // public void hello() {}
 
-    private Wall createWall() {
+    private Wall1 createWall() {
         return null;
     }
 }

@@ -27,8 +27,8 @@ public class GraphicInterface implements Runnable {
     @Override
     public void run() {
         frame = new JFrame("The Confuncian Pakman");
-        int length = (world.getLength()+1)*this.side+10;
-        int height = (world.getHeight()+2)*this.side+10;
+        int length = (world.getLength()+1)*(this.side/3*2+3);
+        int height = (world.getHeight()+2)*(this.side/3*2+3);
          
         frame.setPreferredSize(new Dimension(length, height));
  

@@ -6,7 +6,7 @@ package Pakman.gui;
 
 import Pakman.domain.Point;
 import Pakman.pakman.World;
-import inTheGame.Coins;
+import inTheGame.Bonuses;
 import inTheGame.Enemy;
 import inTheGame.Hero;
 import java.awt.Color;
@@ -20,16 +20,18 @@ public class GraphicBoard extends JPanel implements Updatable  {
 
     public GraphicBoard(World world, int pointLenght) {
         this.world=world;
-        this.pointLength=pointLenght;
+        this.pointLength=pointLenght/3*2+3;
     }
     @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
         setBackgroundColour(graphics);
         setCoinsColour(graphics);
+        setFruitsColour(graphics);
         setWallsColour(graphics);
         setHerosColour(graphics);
-        setEnemysColour(graphics);
+        setEnemy1Colour(graphics);
+        setEnemy2Colour(graphics);
     }
     private void setBackgroundColour(Graphics graphics) {
         graphics.setColor(Color.BLACK);
@@ -49,8 +51,18 @@ public class GraphicBoard extends JPanel implements Updatable  {
                 this.pointLength*2);
     }
 
-    private void setEnemysColour(Graphics graphics) {
-        Enemy enemy=this.world.getEnemy();
+    private void setEnemy1Colour(Graphics graphics) {
+        Enemy enemy=this.world.getEnemy1();
+        graphics.setColor(Color.BLUE);
+        graphics.fillArc(
+                this.pointLength*enemy.getX(), 
+                this.pointLength*enemy.getY(),
+                this.pointLength*2, 
+                this.pointLength*2,
+                320, 270);
+    }
+    private void setEnemy2Colour(Graphics graphics) {
+        Enemy enemy=this.world.getEnemy2();
         graphics.setColor(Color.BLUE);
         graphics.fillArc(
                 this.pointLength*enemy.getX(), 
@@ -89,13 +101,24 @@ public class GraphicBoard extends JPanel implements Updatable  {
     }
 
     private void setCoinsColour(Graphics graphics) {
-        Coins coins=world.getCoins();
+        Bonuses coins=world.getBonuses();
         graphics.setColor(Color.WHITE);
         for (Point coin : coins.getCoins()) {
             graphics.fillOval(this.pointLength*coin.getX()+10, 
                     this.pointLength*coin.getY()+10, 
                     this.pointLength-18, 
                     this.pointLength-18);
+        }
+    }
+
+    private void setFruitsColour(Graphics graphics) {
+        Bonuses coins=world.getBonuses();
+        graphics.setColor(Color.RED);
+        for (Point coin : coins.getFruits()) {
+            graphics.fillOval(this.pointLength*coin.getX(), 
+                    this.pointLength*coin.getY(), 
+                    this.pointLength, 
+                    this.pointLength);
         }
     }
     

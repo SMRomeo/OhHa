@@ -5,17 +5,16 @@
 package Pakman.pakman;
 
 import Pakman.Direction;
+import Pakman.domain.Wall;
+import Pakman.gui.QuestionsGraphicInterface;
 import Pakman.gui.Updatable;
-import inTheGame.Coins;
+import inTheGame.Bonuses;
 import inTheGame.Enemy;
 import inTheGame.Hero;
-import inTheGame.Wall;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.Timer;
 
 
@@ -30,20 +29,24 @@ public class World extends Timer implements ActionListener, KeyListener {
     private boolean gamesEnd;
     private Updatable updatable;
     private Hero hero;
-    private Enemy enemy;
+    private Enemy enemy1;
+    private Enemy enemy2;
+    private char hsk;
     private Wall wall;
-    private Coins coins;
+    private Bonuses bonuses;
 
-    public World(int height, int length) {
+    public World(int height, int length, Wall wall, char hsk) {
         super(1000, null);
  
         this.height = height;
         this.length = length;
         this.gamesEnd = false;
-        this.wall=new Wall(height, length);
+        this.hsk=hsk;
+        this.wall=wall;
         this.hero=newHero();
-        this.enemy=newEnemy();
-        this.coins=new Coins(height,length,this.wall);
+        this.enemy1=newEnemy();
+        this.enemy2=newEnemy();
+        this.bonuses=new Bonuses(height,length,this.wall);
         
         
         addActionListener(this);
@@ -53,8 +56,11 @@ public class World extends Timer implements ActionListener, KeyListener {
     public Hero getHero(){
         return this.hero;
     }
-    public Enemy getEnemy(){
-        return this.enemy;
+    public Enemy getEnemy1(){
+        return this.enemy1;
+    }
+    public Enemy getEnemy2(){
+        return this.enemy2;
     }
     public int getHeight() {
         return this.height;
@@ -62,8 +68,8 @@ public class World extends Timer implements ActionListener, KeyListener {
     public int getLength() {
         return this.length;
     }
-    public Coins getCoins() {
-        return this.coins;
+    public Bonuses getBonuses() {
+        return this.bonuses;
     }
     public void setUpdatable(Updatable updatable) {
         this.updatable=updatable;
@@ -75,7 +81,7 @@ public class World extends Timer implements ActionListener, KeyListener {
     @Override
     public void actionPerformed(ActionEvent ae) {
         heroMoves();
-        enemyMoves();
+        enemiesMove();
         // The time between each move. 1000 equals to one second 
         setDelay(400);
     }
@@ -116,7 +122,7 @@ public class World extends Timer implements ActionListener, KeyListener {
     private void heroMoves() {
         if (this.hero.isMoving()) {
             this.hero.forward();
-            heroRunsIntoCoins();
+            heroRunsIntoBonuses();
             this.hero.stop();
             updatable.update();
             checkTheGameCanContinue();
@@ -124,11 +130,14 @@ public class World extends Timer implements ActionListener, KeyListener {
         } 
     }
 
-    private void enemyMoves() {
+    private void enemiesMove() {
         for (int i = 0; i < this.hero.getCoins()/50 +1; i++) {
-            enemy.randomDirectionChange();
-            enemy.changesDirectionIfCantMove();
-            this.enemy.forward();
+            enemy1.randomDirectionChange();
+            enemy2.randomDirectionChange();
+            enemy1.changesDirectionIfCantMove();
+            enemy2.changesDirectionIfCantMove();
+            this.enemy1.forward();
+            this.enemy2.forward();
             updatable.update();
             checkTheGameCanContinue();
         }
@@ -149,18 +158,29 @@ public class World extends Timer implements ActionListener, KeyListener {
     }
 
     private void checkTheGameCanContinue() {
-        if (enemy.runsIntoBidimensional(hero)) {
+        if (enemy1.runsIntoBidimensional(hero) || enemy2.runsIntoBidimensional(hero)) {
             this.gamesEnd=true;
         }
     }
 
-    private void heroRunsIntoCoins() {
-        if (this.hero.runsIntoCoin(this.coins.getCoins())) {
-            this.coins.removeCoin(this.hero.getX(), this.hero.getY());
-            this.coins.removeCoin(this.hero.getX(), this.hero.getY1());
-            this.coins.removeCoin(this.hero.getX1(), this.hero.getY());
-            this.coins.removeCoin(this.hero.getX1(), this.hero.getY1());
+    private void heroRunsIntoBonuses() {
+        if (this.hero.runsIntoBonus(this.bonuses.getFruits())) {
+            askQuestion();
         }
+        if (this.hero.runsIntoBonus(this.bonuses.getCoins())) {
+            this.bonuses.removeBonuses(this.hero.getX(), this.hero.getY());
+            this.bonuses.removeBonuses(this.hero.getX(), this.hero.getY1());
+            this.bonuses.removeBonuses(this.hero.getX1(), this.hero.getY());
+            this.bonuses.removeBonuses(this.hero.getX1(), this.hero.getY1());
+        }
+    }
+
+    private void askQuestion() {
+        System.out.println("Asking question");
+        QuestionsGraphicInterface questions = new QuestionsGraphicInterface(hsk);
+        questions.run();
+//        SwingUtilities.invokeLater(
+//                new QuestionsGraphicInterface());
     }
     
 }

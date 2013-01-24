@@ -15,5 +15,5 @@ public interface Enrichable {
     public void earn();
     public void earn(int coins);
     public int getCoins();
-    public boolean runsIntoCoin(List<Point> coins);
+    public boolean runsIntoBonus(List<Point> coins);
 }

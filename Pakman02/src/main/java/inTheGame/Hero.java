@@ -56,9 +56,9 @@ public class Hero extends Individual implements Enrichable, ThinkingMind {
     }
 
     @Override
-    public boolean runsIntoCoin(List<Point> coins) {
-        for (Point coin : coins) {
-            if (super.bidimensionalRunsInto(coin)) {
+    public boolean runsIntoBonus(List<Point> bonuses) {
+        for (Point bonus : bonuses) {
+            if (super.bidimensionalRunsInto(bonus)) {
                 this.earn();
                 return true;
             }
