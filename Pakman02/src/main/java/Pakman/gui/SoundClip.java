@@ -13,10 +13,10 @@ import java.net.URL;
 import javax.sound.sampled.*;
 import javax.swing.*;
 
-public class SoundClipTest extends JFrame {
+public class SoundClip extends JFrame {
 
 // Constructor
-public SoundClipTest() {
+public SoundClip() {
   this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
   this.setTitle("Test Sound Clip");
   this.setSize(300, 200);

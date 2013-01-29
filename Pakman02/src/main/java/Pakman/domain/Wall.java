@@ -4,7 +4,6 @@
  */
 package Pakman.domain;
 
-import Pakman.domain.Point;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
-Test set: inTheGame.HeroTest
+Test set: inTheGame.EnemyTest
 -------------------------------------------------------------------------------
-Tests run: 17, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.044 sec
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.001 sec

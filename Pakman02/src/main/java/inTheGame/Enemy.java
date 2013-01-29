@@ -26,12 +26,12 @@ public class Enemy extends Individual implements InanimateMind {
     }
     @Override
     public void randomDirectionChange() {
-        // The default possibility of a direction change is 5 - 1/4
+        // The default possibility of a direction change is 5 --> 3/20
         if (random.nextInt(5)==0) {
             newDirection();
         }
     }
-    private void newDirection() {
+    void newDirection() {
         int i = random.nextInt(4);
         if (i==0) {
             super.setDirection(Direction.UP);

@@ -30,8 +30,7 @@ public class GraphicBoard extends JPanel implements Updatable  {
         setFruitsColour(graphics);
         setWallsColour(graphics);
         setHerosColour(graphics);
-        setEnemy1Colour(graphics);
-        setEnemy2Colour(graphics);
+        setEnemiesColour(graphics);
     }
     private void setBackgroundColour(Graphics graphics) {
         graphics.setColor(Color.BLACK);
@@ -50,28 +49,6 @@ public class GraphicBoard extends JPanel implements Updatable  {
                 this.pointLength*2, 
                 this.pointLength*2);
     }
-
-    private void setEnemy1Colour(Graphics graphics) {
-        Enemy enemy=this.world.getEnemy1();
-        graphics.setColor(Color.BLUE);
-        graphics.fillArc(
-                this.pointLength*enemy.getX(), 
-                this.pointLength*enemy.getY(),
-                this.pointLength*2, 
-                this.pointLength*2,
-                320, 270);
-    }
-    private void setEnemy2Colour(Graphics graphics) {
-        Enemy enemy=this.world.getEnemy2();
-        graphics.setColor(Color.BLUE);
-        graphics.fillArc(
-                this.pointLength*enemy.getX(), 
-                this.pointLength*enemy.getY(),
-                this.pointLength*2, 
-                this.pointLength*2,
-                320, 270);
-    }
-
     private void setWallsColour(Graphics graphics) {
         graphics.setColor(Color.GRAY);
         for (Point brick : this.world.getWall().getBriks()) {
@@ -119,6 +96,18 @@ public class GraphicBoard extends JPanel implements Updatable  {
                     this.pointLength*coin.getY(), 
                     this.pointLength, 
                     this.pointLength);
+        }
+    }
+
+    private void setEnemiesColour(Graphics graphics) {
+        for (Enemy enemy : this.world.getEnemies()) {
+            graphics.setColor(Color.BLUE);
+            graphics.fillArc(
+                    this.pointLength*enemy.getX(), 
+                    this.pointLength*enemy.getY(),
+                    this.pointLength*2, 
+                    this.pointLength*2,
+                    320, 270);
         }
     }
     

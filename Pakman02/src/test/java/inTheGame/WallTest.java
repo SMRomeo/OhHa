@@ -4,6 +4,7 @@
  */
 package inTheGame;
 
+import Pakman.domain.Wall;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -15,11 +16,10 @@ import static org.junit.Assert.*;
  *
  * @author simone
  */
-public class CoinsTest {
-    Wall1 wall;
+public class WallTest {
+    Wall wall;
     
-    public CoinsTest() {
-        this.wall=createWall();
+    public WallTest() {
     }
     
     @BeforeClass
@@ -32,6 +32,7 @@ public class CoinsTest {
     
     @Before
     public void setUp() {
+        wall= new Wall(5,5);
     }
     
     @After
@@ -40,10 +41,8 @@ public class CoinsTest {
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
-    // @Test
-    // public void hello() {}
-
-    private Wall1 createWall() {
-        return null;
-    }
+     @Test
+     public void wallIsTheRightSize() {
+         assertTrue(wall.getBriks().size()==12);
+     }
 }

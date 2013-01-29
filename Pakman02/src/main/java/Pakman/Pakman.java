@@ -6,17 +6,14 @@ package Pakman;
 
 import Pakman.domain.Wall;
 import Pakman.gui.GraphicInterface;
-import Pakman.gui.SoundClipTest;
+import Pakman.gui.SoundClip;
 import Pakman.pakman.World;
 import inTheGame.Wall2;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.print.attribute.standard.Media;
+import javax.sound.sampled.*;
 import javax.swing.SwingUtilities;
 
 /**
@@ -52,8 +49,8 @@ public class Pakman {
         }
 
         world.setUpdatable(gInterface.getUpdatable());
-//        startMusic();
-        new SoundClipTest();
+        startMusic();
+//        new SoundClipTest();
         world.start();
     }
 
@@ -86,16 +83,21 @@ public class Pakman {
 
     private void startMusic() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         // from a wave File
-        File soundFile = new File("/home/simone/OhHa/Pakman02/src/main/java/Pakman/01OnceUponATimeInChina.mp3");
-        AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
-        Clip clip = AudioSystem.getClip();
-        clip.open(audioIn);
+//        String bip = "bip.mp3";
+//Media hit = new Media(bip);
+//MediaPlayer mediaPlayer = new MediaPlayer(hit);
+//mediaPlayer.play();
+        
+//        File soundFile = new File("/home/simone/OhHa/Pakman02/src/main/java/Pakman/ArsenioLupin.wav");
+//        AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
+//        Clip clip = AudioSystem.getClip();
+//        clip.open(audioIn);
 // For small-size file only. Do not use this to open a large file over slow network, as it blocks.
-        // start()
-        clip.start();  // play once
+//         start()
+//        clip.start();  // play once
 // Loop()
 //        clip.loop(0);  // repeat none (play once), can be used in place of start().
 //        clip.loop(5);  // repeat 5 times (play 6 times)
-        clip.loop(Clip.LOOP_CONTINUOUSLY);  // repeat forever
+//        clip.loop(Clip.LOOP_CONTINUOUSLY);  // repeat forever
     }
 }

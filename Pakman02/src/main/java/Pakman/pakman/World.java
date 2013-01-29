@@ -15,6 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 import javax.swing.Timer;
 
 
@@ -29,14 +30,14 @@ public class World extends Timer implements ActionListener, KeyListener {
     private boolean gamesEnd;
     private Updatable updatable;
     private Hero hero;
-    private Enemy enemy1;
-    private Enemy enemy2;
+    private ArrayList<Enemy> enemies;
     private char hsk;
     private Wall wall;
     private Bonuses bonuses;
 
     public World(int height, int length, Wall wall, char hsk) {
         super(1000, null);
+        this.enemies=new ArrayList<Enemy>();
  
         this.height = height;
         this.length = length;
@@ -44,8 +45,8 @@ public class World extends Timer implements ActionListener, KeyListener {
         this.hsk=hsk;
         this.wall=wall;
         this.hero=newHero();
-        this.enemy1=newEnemy();
-        this.enemy2=newEnemy();
+        enemies.add(newEnemy());
+        enemies.add(newEnemy());
         this.bonuses=new Bonuses(height,length,this.wall);
         
         
@@ -56,11 +57,8 @@ public class World extends Timer implements ActionListener, KeyListener {
     public Hero getHero(){
         return this.hero;
     }
-    public Enemy getEnemy1(){
-        return this.enemy1;
-    }
-    public Enemy getEnemy2(){
-        return this.enemy2;
+    public ArrayList<Enemy> getEnemies() {
+        return this.enemies;
     }
     public int getHeight() {
         return this.height;
@@ -83,7 +81,7 @@ public class World extends Timer implements ActionListener, KeyListener {
         heroMoves();
         enemiesMove();
         // The time between each move. 1000 equals to one second 
-        setDelay(400);
+        setDelay(300);
     }
     public boolean gamesEnd() {
         return this.gamesEnd;
@@ -131,15 +129,15 @@ public class World extends Timer implements ActionListener, KeyListener {
     }
 
     private void enemiesMove() {
-        for (int i = 0; i < this.hero.getCoins()/50 +1; i++) {
-            enemy1.randomDirectionChange();
-            enemy2.randomDirectionChange();
-            enemy1.changesDirectionIfCantMove();
-            enemy2.changesDirectionIfCantMove();
-            this.enemy1.forward();
-            this.enemy2.forward();
-            updatable.update();
-            checkTheGameCanContinue();
+        for (Enemy enemy : enemies) {
+            for (int i = 0; i < 1; i++) {
+// This loop is useless now, but it can be easily implemented if we want to modify enemies' velocity
+                enemy.randomDirectionChange();
+                enemy.changesDirectionIfCantMove();
+                enemy.forward();
+                updatable.update();
+                checkTheGameCanContinue();
+            }
         }
     }
 
@@ -158,8 +156,10 @@ public class World extends Timer implements ActionListener, KeyListener {
     }
 
     private void checkTheGameCanContinue() {
-        if (enemy1.runsIntoBidimensional(hero) || enemy2.runsIntoBidimensional(hero)) {
-            this.gamesEnd=true;
+        for (Enemy enemy : enemies) {
+            if (enemy.runsIntoBidimensional(hero)) {
+                this.gamesEnd= true;
+            }
         }
     }
 
@@ -176,11 +176,10 @@ public class World extends Timer implements ActionListener, KeyListener {
     }
 
     private void askQuestion() {
-        System.out.println("Asking question");
         QuestionsGraphicInterface questions = new QuestionsGraphicInterface(hsk);
-        questions.run();
-//        SwingUtilities.invokeLater(
-//                new QuestionsGraphicInterface());
+        if (!questions.ask()) {
+            this.enemies.add(newEnemy());
+        }
     }
     
 }

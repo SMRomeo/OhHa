@@ -25,18 +25,15 @@ public class Bonuses {
     }
 
     private void addBonuses(int height, int length, Wall wall) {
-        Random random = new Random();
         for (int i= 2; i < length - 1; i++) {
             for (int j = 2; j < length - 1; j++) {
                 Point bonus = new Point(i, j);
                 if (!wall.getBriks().contains(bonus)) {
                     coins.add(bonus);
-                    if (i %2==0 && j%2==0 && random.nextInt(15) == 0) {
-                        fruits.add(bonus);
-                    }
                 }
             }
         }
+        addFruits();
     }
     public List<Point> getCoins() {
         return this.coins;
@@ -56,5 +53,13 @@ public class Bonuses {
             coinsPositions+=coin+" - ";
         }
         return coinsPositions;
+    }
+
+    private void addFruits() {
+        Random random = new Random();
+        int characterQuestions = 11;
+        for (int i = 0; i<characterQuestions;i++) {
+            this.fruits.add(this.coins.get(random.nextInt(coins.size()-1)));
+        }
     }
 }
