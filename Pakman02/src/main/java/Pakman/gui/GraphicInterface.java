@@ -8,7 +8,6 @@ import Pakman.pakman.World;
 import java.awt.Container;
 import java.awt.Dimension;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.WindowConstants;
 
 

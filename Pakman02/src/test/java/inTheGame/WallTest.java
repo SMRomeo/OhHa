@@ -4,7 +4,7 @@
  */
 package inTheGame;
 
-import Pakman.domain.Wall;
+import Pakman.AbstractAndSuper.Wall;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

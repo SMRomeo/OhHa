@@ -4,8 +4,9 @@
  */
 package inTheGame;
 
-import Pakman.Direction;
-import Pakman.domain.Point;
+import Pakman.inTheGame.Hero;
+import Pakman.AbstractAndSuper.Direction;
+import Pakman.AbstractAndSuper.Point;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

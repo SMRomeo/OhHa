@@ -4,7 +4,7 @@
  */
 package Pakman.doman;
 
-import Pakman.domain.Point;
+import Pakman.AbstractAndSuper.Point;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;

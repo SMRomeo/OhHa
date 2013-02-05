@@ -4,13 +4,19 @@
  */
 package Pakman.gui;
 
-import Pakman.domain.Point;
+import Pakman.pakman.Pakman;
+import Pakman.AbstractAndSuper.Point;
 import Pakman.pakman.World;
-import inTheGame.Bonuses;
-import inTheGame.Enemy;
-import inTheGame.Hero;
+import Pakman.inTheGame.Bonuses;
+import Pakman.inTheGame.ChiefEnemy;
+import Pakman.inTheGame.Enemy;
+import Pakman.inTheGame.Hero;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.io.IOException;
+import java.util.ArrayList;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JPanel;
 
 
@@ -62,18 +68,23 @@ public class GraphicBoard extends JPanel implements Updatable  {
     @Override
     public void update() {
         if (world.gamesEnd()) {
-            end();
+            try {
+                end();
+            } catch (UnsupportedAudioFileException ex) {
+            } catch (IOException ex) {
+            } catch (LineUnavailableException ex) {
+            }
         } else {
             super.repaint();
         }
     }
 
-    private void end() {
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException ex) {
-                System.out.println("It should be sleeping");
-            }
+    private void end() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+//            try {
+//                Thread.sleep(1000);
+//            } catch (InterruptedException ex) {
+//                System.out.println("It should be sleeping");
+//            }
         setBackgroundColour(super.getGraphics());
     }
 
@@ -100,7 +111,10 @@ public class GraphicBoard extends JPanel implements Updatable  {
     }
 
     private void setEnemiesColour(Graphics graphics) {
-        for (Enemy enemy : this.world.getEnemies()) {
+        ArrayList<Enemy> enemies = this.world.getEnemies();
+        
+        for (int i = 1; i<enemies.size();i++) {
+            Enemy enemy = enemies.get(i);
             graphics.setColor(Color.BLUE);
             graphics.fillArc(
                     this.pointLength*enemy.getX(), 
@@ -109,6 +123,23 @@ public class GraphicBoard extends JPanel implements Updatable  {
                     this.pointLength*2,
                     320, 270);
         }
+        
+        ChiefEnemy chief = (ChiefEnemy) enemies.get(0);
+        graphics.setColor(Color.CYAN);
+        graphics.fillArc(
+                this.pointLength*chief.getX(), 
+                this.pointLength*chief.getY(),
+                this.pointLength*2, 
+                this.pointLength*2,
+                320, 270);
+        
+    }
+
+    private void nextLevel() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+//        System.exit(0);
+//        int level = world.getLevel();
+//        Pakman pakman = new Pakman(level);
+//        pakman.nextLevel();
     }
     
 }

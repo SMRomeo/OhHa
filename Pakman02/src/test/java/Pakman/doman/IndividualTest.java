@@ -4,8 +4,8 @@
  */
 package Pakman.doman;
 
-import Pakman.Direction;
-import Pakman.domain.Individual;
+import Pakman.AbstractAndSuper.Direction;
+import Pakman.AbstractAndSuper.Individual;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

@@ -4,9 +4,9 @@
  */
 package Pakman.unused;
 
-import Pakman.Direction;
+import Pakman.AbstractAndSuper.Direction;
 import Pakman.pakman.World;
-import inTheGame.Hero;
+import Pakman.inTheGame.Hero;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
