@@ -11,10 +11,14 @@ import java.util.Random;
 
 public class Enemy extends Individual implements InanimateMind {
     private Random random;
+//      Only useful to tests
+    private boolean testHasTurned;
     
     public Enemy(int x, int y) {
         super(x,y);
         this.random = new Random();
+//      Only useful to tests
+        this.testHasTurned=false;
     }
     /*
      * The enemy changes direction until he is in front of a wall.
@@ -64,9 +68,21 @@ public class Enemy extends Individual implements InanimateMind {
         if (random.nextBoolean()) {
             if (!super.wallOnTheRight()) {
                     super.turnRight();
+                    // Only useful to tests
+                    this.testHasTurned=true;
             } else if(!super.wallOnTheLeft()) {
                 super.turnLeft();
+                   // Only useful to tests
+                this.testHasTurned=true;
             }
         }
+    }
+    public void moves() {
+        changesDirectionIfCantMove();
+        forward();
+        mayTurnIfPossible();
+    }
+    public boolean testHasTurned() {
+        return this.testHasTurned;
     }
 }

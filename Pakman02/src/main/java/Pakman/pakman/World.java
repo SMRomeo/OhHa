@@ -6,7 +6,6 @@ package Pakman.pakman;
 
 import Pakman.AbstractAndSuper.Direction;
 import Pakman.AbstractAndSuper.Wall;
-import Pakman.AbstractAndSuper.Direction;
 import Pakman.gui.QuestionsGraphicInterface;
 import Pakman.gui.Updatable;
 import Pakman.inTheGame.Bonuses;
@@ -36,7 +35,6 @@ public class World extends Timer implements ActionListener, KeyListener {
     private Hero hero;
     private ArrayList<Enemy> enemies;
     private Level level;
-    private boolean nextLevel;
 
     public World(int height, int length, Level level) {
         super(1000, null);
@@ -49,7 +47,6 @@ public class World extends Timer implements ActionListener, KeyListener {
         this.hero=newHero();
         enemies.add(newChiefEnemy());
         enemies.add(newEnemy());
-        this.nextLevel=false;
         
         
         addActionListener(this);
@@ -57,14 +54,14 @@ public class World extends Timer implements ActionListener, KeyListener {
         setInitialDelay(1000);
     }
     private ChiefEnemy newChiefEnemy() {
-        // Default enemy's location: length-2, heigth-4
+        // Default enemy's location: length-3, heigth-3
         ChiefEnemy newEnemy=new ChiefEnemy(length-3,height-3);
         newEnemy.setDirection(Direction.LEFT);
         newEnemy.set(level.getWall());
         return newEnemy;
     }
     private Enemy newEnemy() {
-        // Default enemy's location: length-2, heigth-4
+        // Default enemy's location: length-3, heigth-3
         Enemy newEnemy=new Enemy(length-3,height-3);
         newEnemy.setDirection(Direction.LEFT);
         newEnemy.set(level.getWall());
@@ -148,25 +145,26 @@ public class World extends Timer implements ActionListener, KeyListener {
             
         } 
     }
-
     private void enemiesMove() throws InterruptedException {
-        ChiefEnemy chief = (ChiefEnemy) enemies.get(0);
-//        chief.randomDirectionChange();
-        chief.mayTurnIfPossible();
-        chief.follows(hero);
-        chief.changesDirectionIfCantMove();
-        chief.forward();
-        updatable.update();
-        checkTheGameCanContinue();
+        chiefEnemyMoves();
         for (int i = 1;i<enemies.size();i++) {
-            Enemy enemy = enemies.get(i);
-//            enemy.randomDirectionChange();
-            enemy.changesDirectionIfCantMove();
-            enemy.forward();
-            enemy.mayTurnIfPossible();
+            enemies.get(i).moves();
             updatable.update();
             checkTheGameCanContinue();
         }
+    }
+    /**
+     * About the methods.
+     * chief.moves() receives as parameter Hero hero because the chief may follow him.
+     * 
+     * @throws InterruptedException 
+     */
+    private void chiefEnemyMoves() throws InterruptedException {
+        ChiefEnemy chief = (ChiefEnemy) enemies.get(0);
+        chief.moves(hero);
+        updatable.update();
+        checkTheGameCanContinue();
+        
     }
     private void checkTheGameCanContinue() throws InterruptedException {
         for (Enemy enemy : enemies) {
@@ -211,7 +209,6 @@ public class World extends Timer implements ActionListener, KeyListener {
         // With this method, the right direction is set though keyboard arrows, 
         // and the hero is allowed to take the next move forward
         // unless he is in front of the wall
-        
         if (ke.getKeyCode()==KeyEvent.VK_UP) {
             this.hero.prepareToMove();
             hero.setDirection(Direction.UP);
@@ -231,7 +228,12 @@ public class World extends Timer implements ActionListener, KeyListener {
     @Override
     public void keyReleased(KeyEvent ke) {
     }
-
-
+    public void testHeroMoves() throws FileNotFoundException, InterruptedException {
+        heroMoves();
+    }    
+    public void testEnemiesMove() throws InterruptedException {
+        enemiesMove();
+    }
+    
     
 }

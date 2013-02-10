@@ -5,12 +5,9 @@
 package Pakman;
 
 import Pakman.pakman.Pakman;
-import Pakman.AbstractAndSuper.Wall;
-import java.awt.Component;
 import java.io.IOException;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import javax.swing.JOptionPane;
 
 
 /**
@@ -18,7 +15,6 @@ import javax.swing.JOptionPane;
  * @author simone
  */
 public class Main {
-    private static Component frame;
 
     /**
      * @param args the command line arguments

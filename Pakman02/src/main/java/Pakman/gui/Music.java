@@ -16,16 +16,8 @@ public class Music implements Runnable {
          this.sound=Applet.newAudioClip(url);
     }
     public void play() {
-        this.sound.play();
+        this.sound.loop();
     }
-    
-    public void haeJaSoitaMusiikki() {
-        URL url = Music.class.getResource("ArsenioLupin.wav");
-        //URL url = new URL("src/Musiikki.wav");
-        AudioClip aani = Applet.newAudioClip(url);
-        aani.play(); 
-    } 
-
     @Override
     public void run() {
         this.play();

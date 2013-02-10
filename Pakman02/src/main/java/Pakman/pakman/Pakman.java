@@ -48,10 +48,10 @@ public class Pakman {
     }
 
     private void startMusic(){
-       Thread s = new Thread(new Music("ArsenioLupin.wav"));
-       s.start();
-//        Music music = new Music("ArsenioLupin.wav");
-//        music.play();
+//       Thread s = new Thread(new Music("01OnceUponATimeInChina.wav"));
+//       s.start();
+        Music music = new Music("Zeng_xiaogang.wav");
+        music.play();
     }
     private void createTheInterface(World world) {
         GraphicInterface gInterface = new GraphicInterface(world, side);

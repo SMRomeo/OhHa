@@ -42,4 +42,10 @@ public class ChiefEnemy extends Enemy implements HuntingDog {
             }
         }
     }
+    public void moves(Hero hero) {
+        super.mayTurnIfPossible();
+        follows(hero);
+        super.changesDirectionIfCantMove();
+        super.forward();
+    }
 }
