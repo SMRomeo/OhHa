@@ -7,6 +7,8 @@ package Pakman.AbstractAndSuper;
 /**
  *
  * @author simone
+ * 
+ * Makes the objects move in an intelligent way
  */
 public interface ThinkingMind {
     public void stop();
