@@ -102,7 +102,7 @@ public class World extends Timer implements ActionListener, KeyListener {
     public void nextLevel() {
         int lv = this.level.getLevelNumber()+1;
         this.level=new Level(height,length,lv,level.getHSK());
-        this.level.moreDifficultCharacters();
+//        this.level.moreDifficultCharacters();
         resetHero();
         resetEnemies();
     }

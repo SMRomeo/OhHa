@@ -30,9 +30,27 @@
                 <configuration>
                     <source>1.6</source>
                     <target>1.6</target>
+                    <archive>
+                    <manifest>
+                        <mainClass>Pakman.Main</mainClass>
+                    </manifest>
+                </archive>
                 </configuration>
                 <version>2.5</version>
             </plugin>
+            <plugin>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <configuration>
+                <archive>
+                    <manifest>
+                        <mainClass>Pakman.Main</mainClass>
+                    </manifest>
+                </archive>
+                <descriptorRefs>
+                    <descriptorRef>jar-with-dependencies</descriptorRef>
+                </descriptorRefs>
+            </configuration>
+        </plugin>
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>cobertura-maven-plugin</artifactId>

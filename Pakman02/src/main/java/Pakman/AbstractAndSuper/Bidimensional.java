@@ -7,6 +7,8 @@ package Pakman.AbstractAndSuper;
 /**
  *
  * @author simone
+ * 
+ * The interface for bidimentional objects
  */
 public interface Bidimensional {
     

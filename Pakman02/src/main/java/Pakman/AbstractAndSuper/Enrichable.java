@@ -8,7 +8,10 @@ import java.util.List;
 
 /**
  *
+ * 
  * @author simone
+ * 
+ * For objects which should run into bonuses, and grab them.
  */
 public interface Enrichable {
     

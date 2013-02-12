@@ -39,6 +39,11 @@ public class Pakman {
         createWorld();
         startMusic();
     }
+    /*
+     * A world is created with a particular level, and HSK characters. The world is
+     * given to the graphic interface, and then it starts running through he method world.start(),
+     * inherited from timer.
+     */
     private void createWorld() {
         int hsk = askLevel();
         Level level = new Level(side,side, levelNumber,hsk);

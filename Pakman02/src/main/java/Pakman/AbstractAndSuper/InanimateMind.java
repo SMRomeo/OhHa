@@ -7,6 +7,8 @@ package Pakman.AbstractAndSuper;
 /**
  *
  * @author simone
+ * 
+ * For non-human controlled objects
  */
 public interface InanimateMind {
     public void changesDirectionIfCantMove();

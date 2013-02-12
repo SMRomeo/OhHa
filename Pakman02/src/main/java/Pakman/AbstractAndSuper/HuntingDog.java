@@ -9,6 +9,8 @@ import Pakman.inTheGame.Hero;
 /**
  *
  * @author simone
+ * 
+ * For object which should follow the hero
  */
 public interface HuntingDog {
     void follows(Hero hero);

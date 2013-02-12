@@ -81,9 +81,7 @@ public class WorldTest {
     @Test
     public void heroMoves() throws FileNotFoundException, InterruptedException {
         Hero hero = world.getHero();
-        hero.setDirection(Direction.RIGHT);
-        hero.prepareToMove();
-        world.testHeroMoves();
+        makeHeroMove(hero);
         assertTrue(hero.getX()==3);
         assertTrue(hero.getY()==2);
     }  
@@ -155,6 +153,21 @@ public class WorldTest {
         }
         assertTrue(c.testHasTurned());
     }  
+    @Test
+    public void gameEnds() throws InterruptedException {
+        Enemy enemy = this.world.getEnemies().get(0);
+        this.world.getHero().reset(enemy.getX(), enemy.getY());
+        world.testEnemiesMove();
+        assertTrue(world.gamesEnd());
+    }   
+    @Test
+    public void nextLevelWorks() throws FileNotFoundException, InterruptedException {
+        Hero hero = world.getHero();
+        makeHeroMove(hero);
+        world.testEnemiesMove();
+        world.nextLevel();
+        
+    }  
     private void createTheInterface() {
         GraphicInterface gInterface = new GraphicInterface(world, 27);
         SwingUtilities.invokeLater(gInterface);
@@ -167,5 +180,11 @@ public class WorldTest {
             }
         }
         world.setUpdatable(gInterface.getUpdatable());
-    }    
+    }  
+    private void makeHeroMove(Hero hero) throws FileNotFoundException, InterruptedException {
+        hero.setDirection(Direction.RIGHT);
+        hero.prepareToMove();
+        world.testHeroMoves();
+        
+    }
 }
