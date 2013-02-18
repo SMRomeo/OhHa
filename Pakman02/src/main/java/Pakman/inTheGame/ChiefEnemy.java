@@ -17,10 +17,22 @@ public class ChiefEnemy extends Enemy implements HuntingDog {
     public ChiefEnemy(int x, int y) {
         super(x,y);
     }
-
     /*
-     * ChiefEnemy is stronger then normal enemies, he can chase the hero 
-     * when he sees him. However, it would be extremely difficult to escape from ChiefEnemy,
+     * The ChiefEnemy moves as a normal Enemy, but he also follows the Hero when the Hero and the Chief are on
+     * the same axis. However, if the hero and the enemy are on the same axes
+     * but there is the wall between them, the Chief changes direction.
+     */
+    public void moves(Hero hero) {
+        super.mayTurnIfPossible();
+        follows(hero);
+        super.changesDirectionIfCantMove();
+        super.forward();
+    }
+    /*
+     * The ChiefEnemy follows the Hero when the Hero and the Chief are on
+     * the same axis. If the hero and the enemy are on the same axes
+     * but there is the wall between them, the Chief changes direction.  
+     * However, it would be extremely difficult to escape from ChiefEnemy,
      * unless the chances to chase the hero were not only two out of three.
      */
     @Override
@@ -41,11 +53,5 @@ public class ChiefEnemy extends Enemy implements HuntingDog {
                 }
             }
         }
-    }
-    public void moves(Hero hero) {
-        super.mayTurnIfPossible();
-        follows(hero);
-        super.changesDirectionIfCantMove();
-        super.forward();
     }
 }

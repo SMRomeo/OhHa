@@ -27,8 +27,11 @@ public class QuestionsGraphicInterface  implements Runnable {
     public QuestionsGraphicInterface(int hsk) {
         this.hsk=hsk;
     }
-    
-    public boolean ask() throws FileNotFoundException {
+    /**
+     * 
+     * @return boolean Returns true if the player answers right to the character question
+     */
+    public boolean ask() {
         ArrayList<String[]> randomCharacters = getRandomQuestions();
         int right = random.nextInt(numberOfQuestions);
         String[]question = randomCharacters.get(right);
@@ -40,13 +43,20 @@ public class QuestionsGraphicInterface  implements Runnable {
         return right == answer;
     }
 
-
+    /**
+     * 
+     * @return JFrame The graphic interface question frame 
+     */
     public JFrame getFrame() {
         
         return frame;
     }
 
-    private ArrayList<String[]> getRandomQuestions() throws FileNotFoundException {
+    /**
+     * 
+     * @return ArrayList<String[]> An ArrayList with the six possible characters to choose among
+     */
+    private ArrayList<String[]> getRandomQuestions() {
         /** Question outlook.
          *  question[0] is composed of two components: a number from 1 to 6 representing the HSK level, 
          *              and an index number, for instance 1-276.
@@ -69,16 +79,31 @@ public class QuestionsGraphicInterface  implements Runnable {
         return randomQuestions;
     }
 
-    private ArrayList<String[]> getWordsFromFile() throws FileNotFoundException {
+    /**
+     * 
+     * @return ArrayList<String[]> Returns all the Chinese words in the document, regardless of how difficult they are
+     * @throws FileNotFoundException If the document containing the Chinese characters is not found
+     */
+    private ArrayList<String[]> getWordsFromFile() {
         ArrayList<String[]> words = new ArrayList<String[]>(); 
-        Scanner scanner = new Scanner(new File("/home/simone/OhHa/Pakman02/src/main/java/Pakman/AbstractAndSuper/HSK6.csv"));
+        Scanner scanner = getScanner();
         while (scanner.hasNext()) {
             words.add(scanner.nextLine().split("\t"));
         }
         return words;
-        
     }
-
+    private Scanner getScanner() {
+        Scanner scanner = null;
+        try {
+            File file = new File(("HSK6.csv"));
+            scanner = new Scanner(file);
+        } catch (FileNotFoundException ex) {
+            System.out.println("The file containing the questions was not found."
+                    +"The file HSK.csv should be cointained in the directory Pakman02");
+            System.out.println("This message occured in Pakman.gui>QuestionsGraphicInterface>getScanner");
+        }
+        return scanner;
+    }
     @Override
     public void run() {
         throw new UnsupportedOperationException("Not supported yet.");

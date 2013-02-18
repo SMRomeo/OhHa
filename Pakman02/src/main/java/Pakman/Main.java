@@ -4,7 +4,7 @@
  */
 package Pakman;
 
-import Pakman.pakman.Pakman;
+import Pakman.starter.Pakman;
 import java.io.IOException;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
@@ -18,9 +18,10 @@ public class Main {
 
     /**
      * @param args the command line arguments
+     * Starts the game
      */
     public static void main(String[] args) throws UnsupportedAudioFileException, IOException, LineUnavailableException{
-        Pakman game = new Pakman(1);
-        game.start();
+        Pakman pGame = new Pakman(1);
+        pGame.start();
     }
 }

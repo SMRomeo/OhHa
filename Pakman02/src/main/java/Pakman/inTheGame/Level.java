@@ -29,12 +29,26 @@ public class Level {
         this.bonuses=new Bonuses(height, length, wall);
         this.hsk=hsk;
     }
+    /**
+     * 
+     * @return Bonuses Returns the bonuses left in the level
+     */
     public Bonuses getBonuses() {
         return this.bonuses;
     }
+    /**
+     * 
+     * @return Wall Returns the wall of the level
+     */
     public Wall getWall() {
         return this.wall;
     }
+    /**
+     * 
+     * @param height The height of the wall
+     * @param length The length of the wall
+     * @return Wall A new wall is created according to the level number
+     */
     private Wall newWall(int height, int length) {
         if (levelNumber==1) {
             return new Wall1(height,length);
@@ -43,7 +57,8 @@ public class Level {
         } else if (levelNumber==3) {
             return new Wall3(height,length);
         } else  {
-            return new Wall1(height,length);
+            levelNumber = 1;
+            return newWall(height,length);
         }
     }
     public Integer getLevelNumber() {

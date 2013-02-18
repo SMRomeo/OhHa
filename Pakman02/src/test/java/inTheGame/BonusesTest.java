@@ -56,10 +56,10 @@ public class BonusesTest {
      @Test
      public void bonusesAreRemoved() {
          Bonuses bonuses = new Bonuses(10,10,new Wall(10,10));
-         Point fruit = bonuses.getFruits().get(0);
-         bonuses.removeBonuses(fruit.getX(),fruit.getY());
-         assertTrue(!bonuses.getFruits().contains(fruit));
-         assertTrue(!bonuses.getCoins().contains(fruit));
+         Point coin = bonuses.getCoins().get(0);
+         bonuses.removeBonuses(coin.getX(),coin.getY());
+         assertTrue(!bonuses.getCoins().contains(coin));
+         assertTrue(!bonuses.getCoins().contains(coin));
          
      }
 

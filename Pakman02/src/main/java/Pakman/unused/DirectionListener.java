@@ -5,7 +5,7 @@
 package Pakman.unused;
 
 import Pakman.AbstractAndSuper.Direction;
-import Pakman.pakman.World;
+import Pakman.starter.Game;
 import Pakman.inTheGame.Hero;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -15,9 +15,9 @@ import java.awt.event.KeyListener;
  * @author simone
  */
 class DirectionListener implements KeyListener {
-    private World scenery;
+    private Game scenery;
 
-    public DirectionListener(World scenery)  {
+    public DirectionListener(Game scenery)  {
         this.scenery=scenery;
     }
 

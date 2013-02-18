@@ -4,7 +4,7 @@
  */
 package Pakman.gui;
 
-import Pakman.pakman.World;
+import Pakman.starter.Game;
 import java.awt.Container;
 import java.awt.Dimension;
 import javax.swing.JFrame;
@@ -14,11 +14,11 @@ import javax.swing.WindowConstants;
 public class GraphicInterface implements Runnable {
  
     private JFrame frame;
-    private World world;    
+    private Game world;    
     private int side;
     private GraphicBoard board;
     
-    public GraphicInterface(World scenery, int side) {
+    public GraphicInterface(Game scenery, int side) {
         this.world = scenery;
         this.side = side;
         

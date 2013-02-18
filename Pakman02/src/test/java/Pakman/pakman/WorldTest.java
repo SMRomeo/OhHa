@@ -4,6 +4,7 @@
  */
 package Pakman.pakman;
 
+import Pakman.starter.Game;
 import Pakman.AbstractAndSuper.Direction;
 import Pakman.AbstractAndSuper.Point;
 import Pakman.gui.GraphicInterface;
@@ -27,7 +28,7 @@ import org.junit.Test;
  */
 public class WorldTest {
     private Level level;
-    private World world;
+    private Game world;
     
     public WorldTest() {
     }
@@ -43,7 +44,7 @@ public class WorldTest {
     @Before
     public void setUp() {
          this.level = new Level(27,27, 1,1);
-         this.world=new World(27,27,level);
+         this.world=new Game(27,27,level);
          createTheInterface();
     }
     

@@ -77,11 +77,20 @@ public class Enemy extends Individual implements InanimateMind {
             }
         }
     }
+    /*
+     * The Enemy moves randomly, meaning that he changes direction when he is in front of a wall
+     * and turns sometimes, when it is possible
+     */
     public void moves() {
         changesDirectionIfCantMove();
         forward();
         mayTurnIfPossible();
     }
+    /**
+     * 
+     * @return True if the enemy has turned
+     * Useful only for the tests
+     */
     public boolean testHasTurned() {
         return this.testHasTurned;
     }

@@ -4,13 +4,12 @@
  */
 package Pakman.gui;
 
-import Pakman.pakman.Pakman;
 import Pakman.AbstractAndSuper.Point;
-import Pakman.pakman.World;
 import Pakman.inTheGame.Bonuses;
 import Pakman.inTheGame.ChiefEnemy;
 import Pakman.inTheGame.Enemy;
 import Pakman.inTheGame.Hero;
+import Pakman.starter.Game;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.io.IOException;
@@ -19,15 +18,29 @@ import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JPanel;
 
-
+/**
+ * 
+ * @author simone
+ * Paints the object in the game
+ */
 public class GraphicBoard extends JPanel implements Updatable  {
-    private World world;
+    private Game world;
     private int pointLength;
 
-    public GraphicBoard(World world, int pointLenght) {
+    /**
+     * 
+     * @param world The world to draw
+     * @param pointLenght The length of a point
+     */
+    public GraphicBoard(Game world, int pointLenght) {
         this.world=world;
         this.pointLength=pointLenght/3*2+3;
     }
+    
+    /**
+     * 
+     * @param graphics 
+     */
     @Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
