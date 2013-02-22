@@ -1,6 +1,6 @@
 Rakennekuvaus:
 Pelissa kaikki alkaa Pakman-luokasta, joka panna sekä musiikin että pelin alkuun.
-Varsinaisen pelin luokka on World-luokka, joka luo melkein kaikki oliot ja ahmot, jotka ovat pelissa.
+Varsinaisen pelin luokka on Game-luokka, joka luo melkein kaikki oliot ja ahmot, jotka ovat pelissa.
 Pelin pääahmo on käyttäjän liikuttama Hero. Sen lisäksi on kaksi tai enemmän Enemy, josta yksi on tarkemmin ottaen aliluokan ChiefEnemyn olio.
 Pelissa on myös Level, josta riippuvat sekä Wall että Bonuses. Wall sääntelee minkälaisten polkujen pitkin Hero ja Enemyt pystyväät liikkumaan, ja jokaisella Levelilla on oma seinä. Bonuses säätelee, missä kohdissa on kolikkoja tai kielikysymyksiä, johon Heron tulee vastaamaan. Bonuses liittyy myös Leveliin, koska bonusten sijainti riippuu seinän sijainnista. 
 Kaikki pelin ahmot periytyvät luokasta Piece, jolla on sijainti.
