@@ -20,27 +20,50 @@ public class Hero extends Individual implements Enrichable, ThinkingMind {
         this.canMove=false;
     }
     // The following are Enrichable methods:
+    
+    /**
+     * The Hero earns coins
+     */
     @Override
     public void earn() {
         this.coins++;
     }
+    /**
+     * 
+     * @param coins The coins earnt
+     */
     @Override
     public void earn(int coins) {
         this.coins+=coins;
     }
+    /**
+     * 
+     * @return int Coins 
+     */
     @Override
     public int getCoins() {
         return this.coins;
     }
     // The following are ThinkingMind methods:
+    
+    /**
+     * The hero stops moving
+     */
     @Override
     public void stop(){
         canMove=false;
     }
+    /*
+     * The hero perpares to move soon
+     */
     @Override
     public void prepareToMove(){
         this.canMove=true;
     }
+    /**
+     * 
+     * @return boolean True if the hero can move (ie he is not standing in front of a wall)
+     */
     @Override
     public boolean isMoving() {
         return this.canMove;
@@ -58,10 +81,10 @@ public class Hero extends Individual implements Enrichable, ThinkingMind {
         }
     }
     
-    /* 
-     * A hero may step unto a bonus (a coin or a fruit). For each bonus that
-     * the hero runs into, he earns money. If he doesn run into any bonus,
-     * the method returns false.
+    /**
+     *  @return boolean True if the hero has run into a bonus 
+     *  A hero may step unto a bonus (a coin or a fruit). For each bonus that
+     *  the hero runs into, he earns money.
      */
     
     @Override

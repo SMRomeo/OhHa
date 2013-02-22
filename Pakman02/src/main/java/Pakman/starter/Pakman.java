@@ -46,13 +46,20 @@ public class Pakman {
         createTheInterface(world);
         world.start();
     }
-
+    /*
+     * The music starts to play
+     */
     private void startMusic(){
 //       Thread s = new Thread(new Music("01OnceUponATimeInChina.wav"));
 //       s.start();
         Music music = new Music();
         music.play();
     }
+    /**
+     * 
+     * @param world The scenery to draw
+     * The interface is created and assigned to the world
+     */
     private void createTheInterface(Game world) {
         GraphicInterface gInterface = new GraphicInterface(world, side);
         SwingUtilities.invokeLater(gInterface);
@@ -68,7 +75,9 @@ public class Pakman {
         world.setUpdatable(gInterface.getUpdatable());
     }
     
-    
+    /**
+     * @return int The difficulty level of the character questions: from 1 to 6; 1 is the easiest
+     */
     private int askLevel() {
         String[] levels = {setFont("1",6),setFont("2",6),setFont("3",6),setFont("4",6),setFont("5",6),setFont("6",6)};
         int answer = JOptionPane.showOptionDialog(frame,
@@ -82,6 +91,12 @@ public class Pakman {
         answer++;
         return answer;
     }
+    /**
+     * 
+     * @param string The string whose size is to be modified
+     * @param size The new size
+     * @return String The modified string
+     */
     private String setFont(String string, int size) {
         return "<html><font size='"+size+"'>"+string+"</font></html>";
     }

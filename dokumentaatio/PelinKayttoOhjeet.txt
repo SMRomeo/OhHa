@@ -1,0 +1,11 @@
+Pelin käyttöohjeet
+
+Peli on tarkoitettu kiinan opiskelijan käyttäjälle, joka haluaa harjoitella kieltä hauskalla tavalla.
+
+Pelin käynnistetään Ubuntussa menemällä .jar-tiedoston kansiolle ja kirjoittamalla java -jar "PacMan02.jar". Lisää tietoa kännistymistavasta, löytyy Jar-kansiosta readme-tiedostosta.
+
+Kun peli käynnistetään, kättäjältä pyydetään valitsemaan kielikysymysten taso eli HSK taso. Helpoimpaan tasoon eli ykköstasoon liittyy noin 150 eri kiinan sanaa. Vaikeimpaan eli kuuteen tansoon liittyy tuhansia eri.
+
+Peli on Pac-Manin kaltainen, käyttäjä liikuttaa siis keltaista ahmoa nuolten painamalla. Sen tarkoitus on syödä kaikki valkoiset pisteet (kolikot) ja punaiset ympyrät. Silloin kun punainen ympyrä sydään, peli pyytää vastaamaan kielikysymykseen. Silloin kun kaikki kolikot on syöty, pelin taso vaihtuu toiseksi (ei siis kielikysymysten taso). Pac-Mania seuraavat siniset viholliset, ja peli loppuu, jos ne törmäävät Pac-Maniin. Viholliset liikkuvat satunnaisesti, mikä tarkoittaa, että ne liikkuvat aina suoraan (ei siis pysyvät paikallaan liikkumatta), mutta ne saattavat kääntyä, jos ne voivat (jos siis seinä ei ole vasemmallaan tai oikeallaan.) Vaaleansininen vihollinen on vahvempi kuin muut ja se saattaa seurata Pac-Mania (usein muttei aina), jos ne ovat samassa sijainnissa. Jos kielikysymykseen vastataan väärin, peliin tulee uusi vihollinen.
+
+Pelia voidaan pelata myös, jos kiinaa ei osata. Mutta tuskin se tulee onnistua hyvin.

@@ -27,9 +27,17 @@ public class Wall {
             }
         }
     }
+    /**
+     * 
+     * @param point The brick to add
+     */
     public void addBricks(Point point) {
         this.bricks.add(point);
     }
+    /**
+     * 
+     * @return List<Point> The brick which form the wall
+     */
     public List<Point> getBriks() {
         return this.bricks;
     }

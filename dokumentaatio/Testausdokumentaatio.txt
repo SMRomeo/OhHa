@@ -1,0 +1,7 @@
+Testausdokumentaatio
+
+Testit ovat usein olleet ikävintä tekemistä. Koska peli perustuu suurin osin käyttäjän syötteisiin, satunnaisiin tapahtumiin, ja privatteihin metodeihin on joskus ollut vaikea keksiä tehokkaita testejä. Ratkaisu on joskus ollut luoda keinotekoisia pubbliceja metodeita kuten esimeksiksi luokassa Game metodi testHeroMoves(), joka kutsuu privaatin metodin heroMoves(), tai keinotekoisia oliomuuttujia kuten esimeksiksi Enemy-luokassa booleanintyyppinen oliomuuttuja testHasTurned.
+
+Vaikka kaikki pääluokat on nyt testatty, on kuitenkin näyttänyt siltä, että helpoin (ja ehkä myös tehokkain) tapa testata pelintoiminnallisuutta on ollut vain pelata sitä.
+
+Olen vasta huomannut, että kielikysymysten Unicode kiinan merkit eivät tule esille oikeassa muodossa Mac-koneilla ja asiaa pitäisi vielä tutkia. Ubuntussa peli kuitenkin toimii hyvin.

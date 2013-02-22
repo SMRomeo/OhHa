@@ -1,0 +1,28 @@
+Aihe: Pakman
+Toteutetaan peli, joka voisi olla hauskaa ja jonka avulla pystyttäisiin harjoittelemaan kiinan kieltä.
+Perusajatus olisi se, että on peli, jossa on sankari (esim pakman) ja tappaaja. Pelissa on myös kolikoita ja muita palkintoja, jotka sankarin täytyy kerätä astumalla niitten päälle. Sankari kuolee, jos törmää tappajaan.
+Kolikoitten lisäksi on pelissa myös joukko erikoisia palkintoja. Astumalla niitten päälle avautuu toisen ikkunan, jolla kysytään monivalintakielikysymys. Esimerkiksi: 
+
+How do you say the following word in Chinese:
+"Home"
+1. 家
+2. 我
+3. 去
+
+Kun kysymysikkuna on auki ei ole mahdollista liikkua, joten käyttäjän on vastettava nopeasti.
+Jos vastetaan oikein rahan määrä kasvaa ja pelaaja pysty siirtymään uudeelleen. Jos vastaus on väärä, oikea vastaus näytetään vaikka kymmenen sekundin aikaan, jolloin pelaaja ei vielä pysty liikkumaan.
+
+Käyttäjä voi valita pelin kysymyksien vaikeus. On kuusi tasoa, kuten on myös kuusi viirallista tasoa kiinan kielen opetuksessa (HSK tentin tasot).
+
+Pelin toiminta saattaa muuttua vielä vähän. Ehdotukset ovat myös tervetulleita.
+
+Käyttäjät: Kiinan opiskelija
+
+Opiskelijan toiminnot:
+
+    pelin tason valitseminen
+    varsinaisen pelin pelaaminen
+    kielen kysymyksien vastaaminen
+    (muuta jos mieleenkiintoista haluatte suositella)
+    …
+
